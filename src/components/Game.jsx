@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import HowToPlayModal from "./HowToPlayModal";
+import Navbar from "./Navbar";
 import "./RockPaperScissors.css"; // External CSS for styling
 import paperImg from "./images/paper.png";
 import rockImg from "./images/rock.png";
@@ -65,7 +67,7 @@ const RockPaperScissors = () => {
     if (playerChoice !== null) {
       countdownInterval = setInterval(() => {
         setCountdown((prevCount) => prevCount - 1);
-      }, 1000);
+      }, 700);
     }
     return () => clearInterval(countdownInterval);
   }, [playerChoice]);
@@ -84,10 +86,7 @@ const RockPaperScissors = () => {
 
   return (
     <div>
-      <nav className="navbar">
-        <div className="navbar-item">User: {userWins}</div>
-        <div className="navbar-item">Computer: {computerWins}</div>
-      </nav>
+      <Navbar userWins={userWins} computerWins={computerWins} />
       <div className="game-container">
         <h1 className="game-title">Rock Paper Scissors</h1>
         <h4>Pick 1 of 3</h4>
@@ -139,23 +138,10 @@ const RockPaperScissors = () => {
         <button className="how-to-play-btn" onClick={toggleInstructions}>
           How to Play
         </button>
-        {showInstructions && (
-          <div className="instructions-modal">
-            <div className="instructions-content">
-              <h2>How to Play Rock Paper Scissors:</h2>
-              <p>
-                1. Click on one of the three choices (rock, paper, or scissors).
-              </p>
-              <p>
-                2. After selecting, wait for the countdown to see the result.
-              </p>
-              <p>3. Repeat to play again!</p>
-              <button className="close-btn" onClick={toggleInstructions}>
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+        <HowToPlayModal
+          isOpen={showInstructions}
+          toggleInstructions={toggleInstructions}
+        />
       </div>
     </div>
   );

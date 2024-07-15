@@ -11,6 +11,18 @@ body {
 }
 .navbar-item {
   font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.navbar-item2 {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  hover: ;
+}
+
+.navbar-item2:hover {
+  color: #0de7e0;
 }
 
 .game-container {
@@ -25,9 +37,11 @@ body {
 }
 
 .choices-container {
+  margin-top: 100px;
   display: flex;
+  gap: 80px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 
 .choice-image {
