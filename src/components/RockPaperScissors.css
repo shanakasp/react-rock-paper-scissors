@@ -185,10 +185,10 @@ body {
   border-radius: 5px;
   font-size: 14px;
   font-weight: bold;
-  pointer-events: none; /* Ensure the name does not interfere with click events on the image */
-  display: none; /* Initially hide the name */
+  pointer-events: none;
+  display: none;
 }
 
 .choice-wrapper:hover .choice-name {
-  display: block; /* Show the name when the choice wrapper is hovered */
+  display: block;
 }

@@ -1,14 +1,11 @@
-// components/WelcomeScreen.jsx
-
 import React, { useEffect, useState } from "react";
 import welcomeImage from "../components/images/123.png";
-import "./WelcomeScreen.css"; // External CSS for styling
+import "./WelcomeScreen.css";
 
 const WelcomeScreen = () => {
   const [loadingComplete, setLoadingComplete] = useState(false);
 
   useEffect(() => {
-    // Simulate loading completion after 3 seconds
     const timer = setTimeout(() => {
       setLoadingComplete(true);
     }, 3000);

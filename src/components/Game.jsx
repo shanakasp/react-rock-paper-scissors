@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HowToPlayModal from "./HowToPlayModal";
 import Navbar from "./Navbar";
-import "./RockPaperScissors.css"; // External CSS for styling
+import "./RockPaperScissors.css";
 import paperImg from "./images/ppapers.png";
 import rockImg from "./images/rrock.png";
 import scissorsImg from "./images/sscissors.png";
@@ -39,17 +39,17 @@ const RockPaperScissors = () => {
   const [userWins, setUserWins] = useState(0);
   const [computerWins, setComputerWins] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [countdown, setCountdown] = useState(3); // Countdown from 3 seconds
+  const [countdown, setCountdown] = useState(3);
   const [showInstructions, setShowInstructions] = useState(false);
-  const [hoveredChoice, setHoveredChoice] = useState(null); // State to track hovered choice
+  const [hoveredChoice, setHoveredChoice] = useState(null);
 
   const handlePlayerChoice = (choice) => {
     setPlayerChoice(choice);
     const computer = getRandomChoice();
     setComputerChoice(computer);
-    setCountdown(3); // Reset countdown for new round
-    setResult(""); // Clear previous result
-    setShowResult(false); // Hide result until countdown finishes
+    setCountdown(3);
+    setResult("");
+    setShowResult(false);
   };
 
   const handleTryAgain = () => {
@@ -64,11 +64,11 @@ const RockPaperScissors = () => {
   };
 
   const handleMouseEnter = (choice) => {
-    setHoveredChoice(choice); // Set hovered choice to show its name
+    setHoveredChoice(choice);
   };
 
   const handleMouseLeave = () => {
-    setHoveredChoice(null); // Clear hovered choice when mouse leaves
+    setHoveredChoice(null);
   };
 
   useEffect(() => {
@@ -84,14 +84,13 @@ const RockPaperScissors = () => {
   useEffect(() => {
     if (countdown === 0 && playerChoice !== null) {
       setResult(determineWinner(playerChoice, computerChoice));
-      setShowResult(true); // Show result after countdown finishes
+      setShowResult(true);
       if (result === "You win!") {
         setUserWins((prev) => prev + 1);
       } else if (result === "Computer wins!") {
         setComputerWins((prev) => prev + 1);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countdown, playerChoice, computerChoice, result]);
 
   return (
