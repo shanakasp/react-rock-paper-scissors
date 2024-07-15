@@ -1,0 +1,61 @@
+/* WelcomeScreen.css */
+
+.welcome-screen {
+  text-align: center;
+  padding: 50px;
+  background-color: #0de0a0; /* Purple background */
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-image {
+  max-width: 100%;
+  margin-top: 60px;
+  animation: slideIn 1s ease-out; /* Slide-in animation */
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-bar {
+  width: 200px;
+  height: 20px;
+  background-color: #ddd; /* Light gray background for loading bar */
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.loading-bar::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 100%;
+  background-color: rgb(30, 80, 232); /* Purple color for filling bar */
+  animation: fillAnimation 3s ease-in-out forwards; /* Fill animation */
+}
+
+@keyframes fillAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

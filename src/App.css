@@ -3,3 +3,46 @@ body {
   margin: 0;
   font-family: "Roboto", sans-serif;
 }
+
+.welcome-screen {
+  text-align: center;
+  padding: 50px;
+  background-color: #3f51b5;
+  color: white;
+  height: 89.6vh;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-image {
+  max-width: 100%;
+  margin-top: 20px;
+  animation: slideIn 1s ease-out; /* Slide-in animation */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

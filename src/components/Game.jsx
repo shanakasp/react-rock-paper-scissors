@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import HowToPlayModal from "./HowToPlayModal";
 import Navbar from "./Navbar";
 import "./RockPaperScissors.css"; // External CSS for styling
-import paperImg from "./images/paper.png";
-import rockImg from "./images/rock.png";
-import scissorsImg from "./images/scissors.png";
+import paperImg from "./images/ppapers.png";
+import rockImg from "./images/rrock.png";
+import scissorsImg from "./images/sscissors.png";
 
 const choices = {
-  rock: rockImg,
-  paper: paperImg,
-  scissors: scissorsImg,
+  rock: { name: "Rock", img: rockImg },
+  paper: { name: "Paper", img: paperImg },
+  scissors: { name: "Scissors", img: scissorsImg },
 };
 
 const determineWinner = (playerChoice, computerChoice) => {
@@ -41,6 +41,7 @@ const RockPaperScissors = () => {
   const [showResult, setShowResult] = useState(false);
   const [countdown, setCountdown] = useState(3); // Countdown from 3 seconds
   const [showInstructions, setShowInstructions] = useState(false);
+  const [hoveredChoice, setHoveredChoice] = useState(null); // State to track hovered choice
 
   const handlePlayerChoice = (choice) => {
     setPlayerChoice(choice);
@@ -60,6 +61,14 @@ const RockPaperScissors = () => {
 
   const toggleInstructions = () => {
     setShowInstructions(!showInstructions);
+  };
+
+  const handleMouseEnter = (choice) => {
+    setHoveredChoice(choice); // Set hovered choice to show its name
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredChoice(null); // Clear hovered choice when mouse leaves
   };
 
   useEffect(() => {
@@ -82,6 +91,7 @@ const RockPaperScissors = () => {
         setComputerWins((prev) => prev + 1);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countdown, playerChoice, computerChoice, result]);
 
   return (
@@ -92,15 +102,24 @@ const RockPaperScissors = () => {
         <h4>Pick 1 of 3</h4>
         <div className="choices-container">
           {Object.keys(choices).map((choice) => (
-            <img
+            <div
               key={choice}
-              src={choices[choice]}
-              alt={choice}
-              className={`choice-image ${
-                playerChoice === choice ? "selected" : ""
-              }`}
+              className="choice-wrapper"
+              onMouseEnter={() => handleMouseEnter(choice)}
+              onMouseLeave={handleMouseLeave}
               onClick={() => handlePlayerChoice(choice)}
-            />
+            >
+              <img
+                src={choices[choice].img}
+                alt={choice}
+                className={`choice-image ${
+                  playerChoice === choice ? "selected" : ""
+                }`}
+              />
+              {hoveredChoice === choice && (
+                <div className="choice-name">{choices[choice].name}</div>
+              )}
+            </div>
           ))}
         </div>
         {playerChoice && !showResult && (
@@ -114,7 +133,7 @@ const RockPaperScissors = () => {
             <div className="result-item">
               <h2>Your choice:</h2>
               <img
-                src={choices[playerChoice]}
+                src={choices[playerChoice].img}
                 alt={playerChoice}
                 className="result-image"
               />
@@ -122,7 +141,7 @@ const RockPaperScissors = () => {
             <div className="result-item">
               <h2>Computer's choice:</h2>
               <img
-                src={choices[computerChoice]}
+                src={choices[computerChoice].img}
                 alt={computerChoice}
                 className="result-image"
               />

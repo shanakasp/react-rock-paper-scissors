@@ -3,7 +3,7 @@
   justify-content: space-around;
   background-color: #5e5e5e;
   color: white;
-  margin: 0px;
+  margin: -20px;
   padding: 20px;
 }
 body {
@@ -157,4 +157,38 @@ body {
 
 .close-btn:hover {
   background-color: #5a6268;
+}
+
+.choice-wrapper {
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.choice-image {
+  width: 100px;
+  height: 100px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.choice-image.selected {
+  transform: scale(1.1);
+}
+
+.choice-name {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: none; /* Ensure the name does not interfere with click events on the image */
+  display: none; /* Initially hide the name */
+}
+
+.choice-wrapper:hover .choice-name {
+  display: block; /* Show the name when the choice wrapper is hovered */
 }
